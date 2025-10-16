@@ -8,9 +8,11 @@ if (bugerMenu) {
     bugerMenu.classList.toggle("active");
 
     if (bugerMenu.classList.contains("active")) {
+      lenis.stop();
       menuBackground.classList.add("active");
       mainMenu.classList.add("active");
     } else {
+      lenis.start();
       menuBackground.classList.remove("active");
       mainMenu.classList.remove("active");
     }
@@ -39,13 +41,53 @@ gsap.utils.toArray("[data-parallax-wrapper]").forEach((container) => {
   );
 });
 
-const accordionCol = document.querySelectorAll('.accordion__col')
+const accordionCol = document.querySelectorAll(".accordion__col");
 
-accordionCol.forEach(col => {
-	col.addEventListener('mouseenter', () => {
-		accordionCol.forEach(c => {
-			c.classList.remove('activ')
-			col.classList.add('activ')
-		})
-	})
-})
+accordionCol.forEach((col) => {
+  col.addEventListener("mouseenter", () => {
+    accordionCol.forEach((c) => {
+      c.classList.remove("activ");
+      col.classList.add("activ");
+    });
+  });
+});
+
+const lenis = new Lenis();
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+function globalGradient() {
+  const interBubble = document.querySelector(".interactive");
+
+  let curX = 0,
+    curY = 0,
+    tgX = 0,
+    tgY = 0;
+
+  function move() {
+    curX += (tgX - curX) / 20;
+    curY += (tgY - curY) / 20;
+
+    gsap.set(interBubble, {
+      x: Math.round(curX),
+      y: Math.round(curY),
+    });
+
+    requestAnimationFrame(() => {
+      move();
+    });
+  }
+
+  window.addEventListener("mousemove", (event) => {
+    tgX = event.clientX;
+    tgY = event.clientY;
+  });
+
+  move();
+}
+
+globalGradient();
