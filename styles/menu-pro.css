@@ -1,0 +1,128 @@
+:root{
+  /* подхватываю твои переменные, даю фолбеки */
+  --lr-violet: var(--accent, var(--violet, #9430f2));
+  --lr-text: var(--text-color, #fff);
+  --lr-muted: var(--muted-color, #c8c8d4);
+  --lr-panel: var(--panel-bg, rgba(255,255,255,.06));
+  --lr-border: var(--panel-border, rgba(255,255,255,.12));
+  --lr-radius: 14px;
+}
+
+.menu-pro{
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+}
+
+/* карточки */
+.menu-pro__card{
+  background: var(--lr-panel);
+  border: 1px solid var(--lr-border);
+  border-radius: var(--lr-radius);
+  padding: 14px;
+}
+
+.menu-pro__title{
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: var(--lr-text);
+}
+.menu-pro__text{
+  margin: 0;
+  color: var(--lr-muted);
+  line-height: 1.5;
+}
+
+/* сетка ссылок */
+.menu-pro__grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.menu-pro__grid a{
+  display: block;
+  text-align: center;
+  color: var(--lr-text);
+  padding: 10px 12px;
+  border: 1px solid var(--lr-border);
+  border-radius: 12px;
+  background: rgba(255,255,255,.05);
+}
+
+/* аккордеон */
+.menu-pro__accordion{
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: rgba(255,255,255,.07);
+  color: var(--lr-text);
+  border: 1px solid var(--lr-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+.menu-pro__accordion svg{ transition: transform .2s ease }
+.menu-pro__accordion[aria-expanded="true"] svg{ transform: rotate(180deg) }
+
+.menu-pro__panel{
+  display: grid;
+  gap: 8px;
+  padding: 10px 4px 0;
+}
+.menu-pro__panel a{
+  display: block;
+  padding: 10px 12px;
+  color: var(--lr-text);
+  border: 1px dashed var(--lr-border);
+  border-radius: 10px;
+  background: rgba(255,255,255,.04);
+}
+
+/* CTA */
+.menu-pro__cta{ display: flex; justify-content: center; }
+.menu-pro__btn{
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 18px; border-radius: 14px;
+  background: var(--lr-violet); color: #fff; font-weight: 700;
+  border: 1px solid rgba(0,0,0,.15);
+  box-shadow: 0 8px 22px rgba(148,48,242,.35);
+}
+
+/* контакты */
+.menu-pro__contacts{
+  margin: 0; padding: 0; list-style: none; display: grid; gap: 8px;
+}
+.menu-pro__contacts a{ color: var(--lr-text) }
+
+/* плавный эффект наведения под твой стиль */
+.menu-pro__grid a,
+.menu-pro__panel a,
+.menu-pro__contacts a {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+
+.menu-pro__grid a::after,
+.menu-pro__panel a::after,
+.menu-pro__contacts a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--lr-violet);
+  transition: width 0.3s ease;
+}
+
+.menu-pro__grid a:hover::after,
+.menu-pro__panel a:hover::after,
+.menu-pro__contacts a:hover::after {
+  width: 100%;
+}
+
+.menu-pro__grid a:hover,
+.menu-pro__panel a:hover,
+.menu-pro__contacts a:hover {
+  color: var(--lr-violet);
+}

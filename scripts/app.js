@@ -91,3 +91,25 @@ function globalGradient() {
 }
 
 globalGradient();
+
+// Аккордеон "Наши направления"
+const proAcc = document.querySelector('.menu-pro__accordion');
+const proPanel = document.getElementById('menu-pro-dirs');
+
+if (proAcc && proPanel) {
+  proAcc.addEventListener('click', (e) => {
+    e.preventDefault();
+    const expanded = proAcc.getAttribute('aria-expanded') === 'true';
+    proAcc.setAttribute('aria-expanded', String(!expanded));
+
+    if (expanded) {
+      proPanel.style.display = 'none';
+      proPanel.hidden = true;
+    } else {
+      proPanel.style.display = 'grid';
+      proPanel.hidden = false;
+    }
+  });
+}
+
+
