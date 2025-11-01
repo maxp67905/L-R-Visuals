@@ -2,6 +2,7 @@
 @import url(./animations.css);
 @import url(./variables.css);
 @import url(../vendor/lenis/lenis.css);
+@import url(./menu-pro.css);
 
 * {
 	margin: 0;
