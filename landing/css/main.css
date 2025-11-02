@@ -22,15 +22,26 @@ body {
 	font-family: kamerik-3d;
 }
 .logo {
-	--logo-size: calc(var(--index) * 7.8);
+	--logo-size: calc(var(--index) * 15);
 	width: var(--logo-size);
 	height: var(--logo-size);
+
 	background-repeat: no-repeat;
-	position: absolute;
-	left: calc(51% - calc(var(--logo-size) / 2));
-	top: calc(var(--index) * 2.8);
-	z-index: 1;
+	background-size: contain;
+	background-position: center;
+
+	/* позиция внутри layer-logo */
+	transform: translate3d(
+		calc(var(--move-x) * 0.3),
+		calc(var(--move-y) * 0.3),
+		0
+	);
+	margin-top: calc(var(--index) * 5.5);
+
+	pointer-events: none;
+	transition: transform 0.06s linear;
 }
+
 .layers {
 	perspective: 1000px;
 	overflow: hidden;
@@ -53,10 +64,10 @@ body {
 	justify-content: center;
 }
 .layer-1 {
-	transform: translateZ(-55px) scale(1.06);
+	transform: translateZ(-55px) scale(1.6);
 }
 .layer-2 {
-	transform: translateZ(80px) scale(.88);
+	transform: translateZ(80px) scale(.99);
 }
 .layer-3 {
 	transform: translateZ(180px) scale(.8);
@@ -69,6 +80,13 @@ body {
 }
 .layer-6 {
 	transform: translateZ(380px);
+}
+.layer-logo {
+	transform: translateZ(260px) scale(.9);
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	pointer-events: none;
 }
 .hero-content {
 	font-size: calc(var(--index) * 2.9);
